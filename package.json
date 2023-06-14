@@ -1,0 +1,19 @@
+{
+  "name": "h5-template-cli",
+  "version": "1.0.0",
+  "description": "a html5 project template cli",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "html5",
+    "cli"
+  ],
+  "author": "dreamjser@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "inquirer": "^9.2.7"
+  }
+}
