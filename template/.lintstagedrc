@@ -1,0 +1,4 @@
+{
+  "src/**/*.(js|vue|ts|tsx)": ["eslint --fix"],
+  ".tmp/**/*.(js|vue|ts|tsx)": ["eslint --fix"]
+}

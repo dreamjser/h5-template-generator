@@ -1,0 +1,47 @@
+{
+  "name": "h5-mobile-bank-vue",
+  "version": "1.0.0",
+  "description": "a mobile bank project develop of vue",
+  "main": "index.js",
+  "scripts": {
+    "dev:single": "npm run serve & cli-dev-s --framework=react",
+    "dev:multiple": "npm run serve & cli-dev-m --framework=react",
+    "build:single": "npm run clean && cli-build-s --framework=react",
+    "build:multiple": "npm run clean && cli-build-m --framework=react",
+    "create": "cli-create --framework=react",
+    "report": "webpack-bundle-analyzer ./dist/stats.json",
+    "serve": "node ./json_server/server.js",
+    "clean": "rm -rf dist",
+    "publish": "npm i && npm run build:single",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
+  },
+  "author": "sunyg@belink.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "@dreamjser/h5-webpack-cli": "^1.0.14",
+    "husky": "^8.0.3",
+    "json-server": "^0.17.3",
+    "lint-staged": "^13.2.3",
+    "webpack-bundle-analyzer": "^4.9.0"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.22.9",
+    "@babel/runtime": "^7.22.6",
+    "@dreamjser/request-axios": "^1.0.5",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "antd-mobile": "^5.32.0",
+    "axios": "^1.4.0",
+    "core-js": "^3.31.1",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.2",
+    "redux": "^4.2.1"
+  }
+}

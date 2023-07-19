@@ -1,0 +1,18 @@
+{
+  "index": {
+    "index": {
+      "title": "转账管理"
+    }
+  },
+  "single": {
+    "index": {
+      "title": "单笔转账"
+    },
+    "confirm": {
+      "title": "转账确认"
+    },
+    "result": {
+      "title": "转账结果"
+    }
+  }
+}

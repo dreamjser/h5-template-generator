@@ -1,0 +1,18 @@
+node_modules/
+dist/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+yarn.lock
+package-lock.json
+
+.project
+.tmp
+pnpm-lock.yaml
+.eslintcache

@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./tmp",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "allowJs": true,
+    "noEmit": true,
+    "noEmitOnError": true,
+    "noImplicitReturns": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    // 加入严格模式
+    "alwaysStrict": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "jsx": "react",
+    // 生成导入命名空间
+    "esModuleInterop": true,
+    // 删除注释
+    "removeComments": true,
+    "typeRoots": ["./node_modules/@types", "./typings"]
+  },
+  "exclude": ["node_modules", "tmp"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "typings/*.d.ts"],
+}

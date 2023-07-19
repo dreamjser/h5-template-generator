@@ -1,0 +1,12 @@
+{
+  "login": {
+    "index": {
+      "title": "登录"
+    }
+  },
+  "register": {
+    "index": {
+      "title": "注册"
+    }
+  }
+}
