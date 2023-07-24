@@ -1,5 +1,5 @@
 {
-  "name": "h5-template-cli",
+  "name": "@dreamjser/h5-template-generator",
   "version": "1.0.0",
   "description": "a html5 project template cli",
   "main": "index.js",
@@ -14,6 +14,10 @@
   "author": "dreamjser@gmail.com",
   "license": "ISC",
   "devDependencies": {
+    "copy-template-dir": "^1.4.0",
     "inquirer": "^9.2.7"
+  },
+  "bin": {
+    "generate-template": "bin/index.js"
   }
 }
