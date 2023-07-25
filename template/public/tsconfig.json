@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./tmp",
+    "outDir": "./.tmp",
     "paths": {
       "@/*": [
         "src/*"
@@ -12,7 +12,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "allowJs": true,
-    "noEmit": true,
+    "noEmit": false,
     "noEmitOnError": true,
     "noImplicitReturns": true,
     "allowSyntheticDefaultImports": true,
@@ -26,8 +26,8 @@
     "esModuleInterop": true,
     // 删除注释
     "removeComments": true,
-    "typeRoots": ["./node_modules/@types", "public/typings"]
+    "typeRoots": ["./node_modules/@types", "./typings"]
   },
-  "exclude": ["node_modules", "tmp"],
-  "include": ["src/**/*.ts", "src/**/*.tsx", "public/typings/*.d.ts"],
+  "exclude": ["node_modules", ".tmp"],
+  "include": ["src/**/*.ts", "src/**/*.tsx",  "src/**/*.vue", "typings/*.d.ts"],
 }
