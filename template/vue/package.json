@@ -1,0 +1,42 @@
+{
+  "name": "h5-mobile-bank-vue",
+  "version": "1.0.0",
+  "description": "a mobile bank project develop of vue",
+  "main": "index.js",
+  "scripts": {
+    "dev:single": "npm run serve & cli-dev-s --framework=vue",
+    "dev:multiple": "npm run serve & cli-dev-m --framework=vue",
+    "build:single": "npm run clean && cli-build-s --framework=vue",
+    "build:multiple": "npm run clean && cli-build-m --framework=vue",
+    "create": "cli-create --framework=vue",
+    "report": "webpack-bundle-analyzer ./dist/stats.json",
+    "serve": "node ./json_server/server.js",
+    "clean": "rm -rf dist",
+    "publish": "npm i && npm run build:single",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged"
+  },
+  "author": "dreamjser@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "@dreamjser/h5-webpack-cli": "^1.0.14",
+    "husky": "^8.0.3",
+    "json-server": "^0.17.3",
+    "lint-staged": "^13.2.3",
+    "webpack-bundle-analyzer": "^4.9.0"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.22.9",
+    "@babel/runtime": "^7.22.6",
+    "@dreamjser/request-axios": "^1.0.5",
+    "axios": "^1.4.0",
+    "core-js": "^3.31.1",
+    "lodash": "^4.17.21",
+    "pinia": "^2.1.4",
+    "vant": "^4.6.2",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  }
+}
