@@ -26,6 +26,12 @@ const frameworkQuestion = [{
   choices: ['react', 'vue'],
 }]
 
+const copyFile = (srcDir, targetDir, vars = {}) => {
+  return new Promise((reslove => {
+    copyTemplateDir(srcDir, targetDir, vars, reslove)
+  }))
+}
+
 const init = async () => {
   if(argvs.length < 3) {
     console.log(chalk.yellow('请输入目录 \n'))
@@ -33,15 +39,15 @@ const init = async () => {
   }
 
   const dir = argvs[argvs.length - 1]
+  const baseDir = path.dirname(url.fileURLToPath(import.meta.url))
   const targetDir = path.join(process.cwd(), dir)
-  const srcDir = path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../template')
+  const srcPublicDir = path.join(baseDir, '../template/public')
   const platform = await inquirer.prompt(platformQuestion)
   const framework = await inquirer.prompt(frameworkQuestion)
+  const srcFrameworkDir = path.join(baseDir, `../template/${framework.value}`)
 
-  copyTemplateDir(srcDir, targetDir, () => {
-    console.log('success')
-    process.exit()
-  })
+  await copyFile(srcPublicDir, targetDir)
+  await copyFile(srcFrameworkDir, targetDir)
 }
 
 init()
