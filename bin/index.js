@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 
 import inquirer from 'inquirer'
+import chalk from 'chalk'
+import path from 'path'
+import url from 'url'
+import copyTemplateDir from 'copy-template-dir'
+
+const argvs = process.argv
 
 // 选择平台
 const platformQuestion = [{
@@ -21,10 +27,21 @@ const frameworkQuestion = [{
 }]
 
 const init = async () => {
+  if(argvs.length < 3) {
+    console.log(chalk.yellow('请输入目录 \n'))
+    return false
+  }
+
+  const dir = argvs[argvs.length - 1]
+  const targetDir = path.join(process.cwd(), dir)
+  const srcDir = path.join(path.dirname(url.fileURLToPath(import.meta.url)), '../template')
   const platform = await inquirer.prompt(platformQuestion)
   const framework = await inquirer.prompt(frameworkQuestion)
 
-  console.log(platform.value, framework.value)
+  copyTemplateDir(srcDir, targetDir, () => {
+    console.log('success')
+    process.exit()
+  })
 }
 
 init()
