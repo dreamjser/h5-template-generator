@@ -4,16 +4,13 @@
   "description": "a html5 project template cli",
   "main": "index.js",
   "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "html5",
     "cli"
   ],
   "author": "dreamjser@gmail.com",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^5.3.0",
     "copy-template-dir": "^1.4.0",
     "inquirer": "^9.2.7"
