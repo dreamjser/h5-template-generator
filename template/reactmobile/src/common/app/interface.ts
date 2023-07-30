@@ -9,37 +9,27 @@ import {
 export type AlertProps = string | ModalAlertProps
 
 export const alert = (opts: AlertProps) => {
-  return new Promise((reslove: any) => {
-    if (typeof opts === 'string') {
-      Modal.alert({
-        confirmText: '确定',
-        content: opts,
-        onConfirm: reslove,
-      })
-    } else {
-      opts.onConfirm = reslove
-      Modal.alert(opts)
-    }
-  })
+  if (typeof opts === 'string') {
+    return Modal.alert({
+      confirmText: '确定',
+      content: opts,
+    })
+  } else {
+    return Modal.alert(opts)
+  }
 }
 
 export type ConfirmProps = string | ModalConfirmProps
 
 export const confirm = (opts: ConfirmProps) => {
-  return new Promise((reslove: any, reject: any) => {
-    if (typeof opts === 'string') {
-      Modal.confirm({
-        confirmText: '确定',
-        content: opts,
-        onConfirm: reslove,
-        onCancel: reject,
-      })
-    } else {
-      opts.onConfirm = reslove
-      opts.onCancel = reject
-      Modal.confirm(opts)
-    }
-  })
+  if (typeof opts === 'string') {
+    return Modal.confirm({
+      confirmText: '确定',
+      content: opts,
+    })
+  } else {
+    return Modal.confirm(opts)
+  }
 }
 
 export type ToastProps = string | ToastShowProps

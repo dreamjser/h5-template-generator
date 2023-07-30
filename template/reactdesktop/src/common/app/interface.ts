@@ -1,59 +1,80 @@
-import {
-  Modal,
-  ModalAlertProps,
-  ModalConfirmProps,
-  Toast,
-  ToastShowProps,
-} from 'antd-mobile'
+import { ReactNode } from 'react'
+import { Modal, ModalFuncProps, message } from 'antd'
 
-export type AlertProps = string | ModalAlertProps
+export type AlertProps = string | ModalFuncProps
 
 export const alert = (opts: AlertProps) => {
   return new Promise((reslove: any) => {
     if (typeof opts === 'string') {
-      Modal.alert({
-        confirmText: '确定',
+      Modal.info({
+        title: '提示',
         content: opts,
-        onConfirm: reslove,
+        onOk: () => {
+          reslove()
+        },
       })
     } else {
-      opts.onConfirm = reslove
-      Modal.alert(opts)
+      opts.onOk = () => {
+        reslove()
+      }
+      Modal.info(opts)
     }
   })
 }
 
-export type ConfirmProps = string | ModalConfirmProps
+export type ConfirmProps = string | ModalFuncProps
 
 export const confirm = (opts: ConfirmProps) => {
   return new Promise((reslove: any, reject: any) => {
+    const defaultOpts = {
+      onOk: () => {
+        reslove()
+      },
+      onCancel: () => {
+        reject && reject()
+      },
+      okText: '确定',
+      cancelText: '取消',
+    }
+
     if (typeof opts === 'string') {
       Modal.confirm({
-        confirmText: '确定',
         content: opts,
-        onConfirm: reslove,
-        onCancel: reject,
+        ...defaultOpts,
       })
     } else {
-      opts.onConfirm = reslove
-      opts.onCancel = reject
-      Modal.confirm(opts)
+      Modal.confirm({
+        ...defaultOpts,
+        ...opts,
+      })
     }
   })
 }
 
-export type ToastProps = string | ToastShowProps
+type ToastOptions = {
+  content: ReactNode
+  duration?: number
+  maxCount?: number
+  icon?: ReactNode
+  onClose: () => void
+}
+
+export type ToastProps = string | ToastOptions
 
 export const toast = (opts: ToastProps) => {
   return new Promise((reslove: any) => {
     if (typeof opts === 'string') {
-      Toast.show({
+      message.open({
         content: opts,
-        afterClose: reslove,
+        onClose: () => {
+          reslove()
+        },
       })
     } else {
-      opts.afterClose = reslove
-      Modal.show(opts)
+      opts.onClose = () => {
+        reslove()
+      }
+      message.open(opts)
     }
   })
 }
