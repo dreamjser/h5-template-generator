@@ -5,7 +5,6 @@ module.exports = {
   alias: {
     '@': path.resolve(__dirname, 'src'),
     '@tmp': path.resolve(__dirname, '.tmp'),
-    'antd-mobile': 'antd-mobile/2x'
   },
   devPort: '3003',
   modulePrefix: 'mb_',
