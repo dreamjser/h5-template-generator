@@ -8,6 +8,10 @@
     "html5",
     "cli"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreamjser/h5-template-generator.git"
+  },
   "author": "dreamjser@gmail.com",
   "license": "ISC",
   "dependencies": {
