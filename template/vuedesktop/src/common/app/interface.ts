@@ -32,9 +32,17 @@ export const confirm = (opts: ConfirmProps) => {
   }
 }
 
-export type ToastProps = MessageOptions
+
+type ToastContentOption = {
+  content?: string
+}
+
+export type ToastProps = string | (MessageOptions & ToastContentOption)
 
 export const toast = (opts: ToastProps) => {
+  if(typeof opts !== 'string') {
+    opts.message = opts.content || opts.message
+  }
   return new Promise((reslove: any) => {
     ElMessage(Object.assign(opts, {
       onClose: reslove

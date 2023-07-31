@@ -32,9 +32,16 @@ export const confirm = (opts: ConfirmProps) => {
   }
 }
 
-export type ToastProps = string | ToastOptions
+type ToastContentOption = {
+  content?: string
+}
+
+export type ToastProps = string | (ToastOptions & ToastContentOption)
 
 export const toast = (opts: ToastProps) => {
+  if(typeof opts !== 'string') {
+    opts.message = opts.content || opts.message
+  }
   showToast(opts)
 }
 
