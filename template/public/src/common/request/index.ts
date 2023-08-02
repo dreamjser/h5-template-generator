@@ -1,12 +1,13 @@
-import { getGlobalAxios, getAxios, AllType } from '@dreamjser/request-axios'
+import { getGlobalAxios, getAxios, AllType, OptionsGlobalType } from '@dreamjser/request-axios'
 import { showLoading, hideLoading } from './loading'
 
-const axiosInstance = getGlobalAxios({
+const globalOpts: OptionsGlobalType = {
   timeout: 30000,
   baseURL: GLOBAL_CONFIG.BASE_URL,
-})
+}
+const axiosInstance = getGlobalAxios(globalOpts)
 
-const requestHook = (config: any) => {
+const requestHook = (config: AllType) => {
   !config.slient && showLoading()
 }
 
