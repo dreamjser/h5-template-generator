@@ -6,13 +6,12 @@
   "scripts": {
     "dev:single": "npm run serve & cli-dev-s --framework=react",
     "dev:multiple": "npm run serve & cli-dev-m --framework=react",
-    "build:single": "npm run clean && cli-build-s --framework=react",
-    "build:multiple": "npm run clean && cli-build-m --framework=react",
+    "build:s-test": "npm run clean && cli-build-s --env=sit --framework=react all",
+    "build:m-test": "npm run clean && cli-build-m --env=sit --framework=react all",
     "create": "cli-create --framework=react",
     "report": "webpack-bundle-analyzer ./dist/stats.json",
     "serve": "node ./json_server/server.js",
     "clean": "rm -rf dist",
-    "publish": "npm i && npm run build:single",
     "prepare": "git init && chmod ug+x .husky/* && husky install",
     "pre-commit": "lint-staged"
   },
