@@ -5,7 +5,6 @@ import chalk from 'chalk'
 import path from 'path'
 import url from 'url'
 import copyTemplateDir from 'copy-template-dir'
-import { exec } from 'child_process'
 
 const argvs = process.argv
 
@@ -54,20 +53,6 @@ const init = async () => {
   await copyFile(srcPlatformDir, targetDir)
   await copyFile(srcFrameworkPlatformDir, targetDir)
 
-  // exec(`cd ${dir} && pnpm install`, (error, stdout, stderr) => {
-  //   if(error) {
-  //     console.log(error, '999')
-  //     return
-  //   }
-  //   console.log(stderr, 'kkk')
-  //   // exec(`npm i`, (error, stdout, stderr) => {
-  //   //   if(error) {
-  //   //     console.log(error, '888')
-  //   //     return
-  //   //   }
-  //   //   console.log(stderr, '222')
-  //   // })
-  // })
 }
 
 init()
