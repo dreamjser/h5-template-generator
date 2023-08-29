@@ -35,9 +35,9 @@ const copyFile = (srcDir, targetDir, vars = {}) => {
 
 const renameFile = () => {
   const dir = argvs[argvs.length - 1]
-  const gitigoreFileSrc = path.join(process.cwd(), dir, 'template/public/.gitignore_')
-  const gitigoreFileTarget = path.join(process.cwd(), dir, 'template/public/.gitignore')
-
+  const gitigoreFileSrc = path.join(process.cwd(), dir, '.gitignore_')
+  const gitigoreFileTarget = path.join(process.cwd(), dir, '.gitignore')
+  console.log(gitigoreFileSrc, gitigoreFileTarget, '99')
   fs.rename(gitigoreFileSrc, gitigoreFileTarget, () => {
     console.log(chalk.green('completed!!!!'))
     process.exit()
