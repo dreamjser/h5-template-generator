@@ -4,6 +4,7 @@ import inquirer from 'inquirer'
 import chalk from 'chalk'
 import path from 'path'
 import url from 'url'
+import fs from 'fs'
 import copyTemplateDir from 'copy-template-dir'
 
 const argvs = process.argv
@@ -32,6 +33,17 @@ const copyFile = (srcDir, targetDir, vars = {}) => {
   }))
 }
 
+const renameFile = () => {
+  const dir = argvs[argvs.length - 1]
+  const gitigoreFileSrc = path.join(process.cwd(), dir, 'template/public/.gitignore_')
+  const gitigoreFileTarget = path.join(process.cwd(), dir, 'template/public/.gitignore')
+
+  fs.rename(gitigoreFileSrc, gitigoreFileTarget, () => {
+    console.log(chalk.green('completed!!!!'))
+    process.exit()
+  })
+}
+
 const init = async () => {
   if(argvs.length < 3) {
     console.log(chalk.yellow('请输入目录 \n'))
@@ -52,7 +64,7 @@ const init = async () => {
   await copyFile(srcFrameworkDir, targetDir)
   await copyFile(srcPlatformDir, targetDir)
   await copyFile(srcFrameworkPlatformDir, targetDir)
-
+  renameFile()
 }
 
 init()
