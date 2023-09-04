@@ -8,7 +8,7 @@ module.exports = ({file}) =>  {
       "postcss-import": {},
       "postcss-url": {},
       "autoprefixer": {},
-      "postcss-px-to-viewport": {
+      "@dreamjser/postcss-px-to-viewport": {
         unitToConvert: "px",
         viewportWidth: designWidth,
         unitPrecision: 6,
