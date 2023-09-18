@@ -1,13 +1,10 @@
-import React, { FC, useEffect} from 'react'
+import React from 'react'
 
-const View: FC = () => {
+const View = () => {
 
-  useEffect(() => {
-
-  }, [])
   return (
     <div>
-      内容
+      content
     </div>
   )
 }
