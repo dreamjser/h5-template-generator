@@ -38,6 +38,8 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-redeclare': 'off',
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     'prettier/prettier': [
       'error',
       {
