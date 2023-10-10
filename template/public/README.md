@@ -11,7 +11,8 @@
 |  ├─prod.env.js              ----------- 生产环境配置
 |  ├─develop.env.js           ----------- 开发环境配置
 |
-├─dist
+├─deploy                      ----------- 部署相关配置(docker/nginx)
+├─json_server                 ----------- mock本地服务及部署配置(docker/pm2)
 |
 ├─node_modules
 |

@@ -1,0 +1,10 @@
+{
+  "name": "json_server",
+  "version": "1.0.0",
+  "description": "a json server",
+  "author": "dreamjser@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.3"
+  }
+}
