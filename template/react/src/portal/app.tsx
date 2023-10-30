@@ -1,5 +1,5 @@
 import React, { FC, Suspense } from 'react'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 import children from '@tmp/routers'
 import { ROOT_REDIRECT } from '@/common/utils/constant'
@@ -11,7 +11,7 @@ const lazyComponent = (Component: FC) => (
 )
 
 const Entry = () => (
-  <HashRouter>
+  <BrowserRouter>
     <Routes>
       <Route path="/" element={<Navigate to={ROOT_REDIRECT} />} />
       {children.map((child: any) => (
@@ -22,7 +22,7 @@ const Entry = () => (
         />
       ))}
     </Routes>
-  </HashRouter>
+  </BrowserRouter>
 )
 
 export default Entry
