@@ -7,6 +7,7 @@ module.exports = {
     '@tmp': path.resolve(__dirname, '.tmp'),
   },
   devPort: '3003',
+  outputPath: 'dist',
   modulePrefix: 'mb_',
   proxyTable: {
     '/api': {
