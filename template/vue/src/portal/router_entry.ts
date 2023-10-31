@@ -6,6 +6,7 @@ const homeRoutes = [
   {
     name: 'home',
     path: '/',
+    children: routes,
     redirect: ROOT_REDIRECT,
     meta: {
       title: '首页',
@@ -18,7 +19,8 @@ const homeRoutes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [...homeRoutes, ...routes],
+  routes: homeRoutes,
+  // routes: [...homeRoutes, ...routes],
 })
 
 export default router

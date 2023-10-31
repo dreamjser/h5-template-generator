@@ -1,28 +1,20 @@
-import React, { FC, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Navigate } from 'react-router-dom'
-import children from '@tmp/routers'
+import React, { useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { ROOT_REDIRECT } from '@/common/utils/constant'
 
-const lazyComponent = (Component: FC) => (
-  <Suspense fallback={<></>}>
-    <Component />
-  </Suspense>
-)
+export default function Home() {
+  const navigate = useNavigate()
+  const location = useLocation()
 
-const Entry = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Navigate to={ROOT_REDIRECT} />} />
-      {children.map((child: any) => (
-        <Route
-          key={child.path}
-          path={child.path}
-          element={lazyComponent(child.component)}
-        />
-      ))}
-    </Routes>
-  </BrowserRouter>
-)
+  useEffect(() => {
+    const { pathname } = location
+    if (pathname === '/') {
+      navigate(ROOT_REDIRECT, {
+        replace: true,
+      })
+    }
+  }, [location])
 
-export default Entry
+  return <Outlet />
+}
