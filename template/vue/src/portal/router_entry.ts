@@ -10,16 +10,18 @@ const homeRoutes = [
     redirect: ROOT_REDIRECT,
     meta: {
       title: '首页',
-      needLogin: false,
-      checkCard: false,
-      checkTransfer: false,
     },
   },
+  {
+    name: 'login',
+    path: '/login',
+    component: () => import('./login.vue'),
+  }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: homeRoutes,
+  routes: homeRoutes as any,
   // routes: [...homeRoutes, ...routes],
 })
 

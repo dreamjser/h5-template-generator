@@ -8,7 +8,7 @@ import router from './router_entry'
 
 const pinia = createPinia()
 //vue实例化
-const vm = createApp(Render)
+const vm = createApp(Render as any)
 
 vm.use(pinia)
 vm.use(router)

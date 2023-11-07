@@ -1,5 +1,6 @@
 import {  AllType } from '@dreamjser/request-axios'
 import { AlertProps, ConfirmProps, ToastProps } from '@/common/app/interface'
+import {RouterProps} from '@/common/router'
 
 type GLOBAL_CONFIG = {
   BASE_URL: string
@@ -12,9 +13,15 @@ interface InterfaceType {
   toast: (opts: ToastProps) => Promise<void>
 }
 
+interface RouterType {
+  push: (pathname: string, opts?: RouterProps) => void,
+  pop: (index?: number) => void
+}
+
 type IApp = {
-  request: (opts: AllType) => any
+  request: (opts: AllType) => Promise<void>
   interface: InterfaceType
+  router: RouterType
   [propName: string]: any
 }
 
