@@ -22,6 +22,7 @@
 |  |     ├─components         ----------- 公共组件
 |  |     ├─request            ----------- 公共请求封装
 |  |     ├─store              ----------- 状态管理
+|  |     ├─router             ----------- 路由跳转
 |  |     ├─styles             ----------- 公共样式
 |  |     ├─utils              ----------- 工具库
 |  |
@@ -38,6 +39,7 @@
 ├─.eslintrc.js                ----------- 定义eslint的plugins,extends,rules
 ├─.gitignore                  ----------- git上传需要忽略的文件格式
 ├─.lintstagedrc               ----------- lint-stage配置文件
+├─.swcrc                      ----------- swc配置文件
 |-commitlint.config.js        ----------- commitlint配置文件
 ├─package.json                ----------- 项目信息、项目依赖管理
 ├─tsconfig.json               ----------- ts配置文件
@@ -49,17 +51,13 @@
 ## 2.安装npm依赖
 
 ```
-// 推荐
 pnpm i
-```
 
-```
 npm i
-```
 
-```
 yarn
 ```
+
 
 安装npm依赖后触发 `"prepare": "git init && chmod ug+x .husky/* && husky install",` 脚本，初始化git并且进行husky的install
 
@@ -137,13 +135,35 @@ App.request(opts).then((r) => {
 })
 ```
 
+opts参数可以设置axios的配置，配置同axios，同时新增了自定义配置如下
+
+```
+{
+  // 是否显示loading，默认true
+  slient?:
+  // 是否上传文件，默认false，为true则默认使用FormData数据
+  isUpload?: boolean
+  // 传参数据，不区分method
+  data?: object
+  // 是否显示公共错误提示，默认true，为false可以在调用时捕获异常做处理
+  publicError?: boolean
+  // 请求发起前hook
+  requestHook?: (opts: AllType) => any
+  // 请求返回数据hook
+  responseHook?: (reslove: any, reject: any, data: any) => void
+}
+
+```
+
 ## 6.提示弹框
 
 ### 6.1 alert 弹框
 
 ```
+
 // opts 配置项 string | {message: '内容' : confirmButtonText: '确定按钮'}
 App.interface.alert(opts)
+
 ```
 
 ### 6.2 confirm 弹框
@@ -179,3 +199,64 @@ module.exports = {
 let url = GLOBAL_ENV.BASE_URL
 ```
 
+## 8.路由跳转/返回
+
+- App.router.push(pathname:string, opts?:object) 跳转
+
+  - pathname {string}跳转路径
+
+  - opts.replace, {boolean}是否替换跳转
+  - opts.state, {object}传递数据
+  - opts.query, {object}传递url参数
+
+- App.router.pop(index?:number) 返回
+
+  - index {number} 返回层级
+
+## 9.设置权限
+
+设置权限可以在路由跳转时进行权限拦截，具体操作如下：
+
+- 修改src/modules/xxx/conf.json
+
+```
+{
+  "index": {
+    "index": {
+      "title": "react自学笔记-组件",
+      // 权限在此处可自定义
+      "needLogin": false
+    }
+  }
+}
+```
+
+- 修改src/common/router/auth.ts
+
+```
+import routers from '@tmp/routers'
+import router from '@/portal/router_entry'
+
+const getAuthInfo = (pathname: string) => {
+  const routerMaps: any = {}
+
+  routers.reduce((prev: any, current: any) => {
+    prev[current.path] = current.meta
+    return prev
+  }, routerMaps)
+
+  return routerMaps[pathname] || null
+}
+
+// 可修改checkAuth函数，对权限字段进行校验
+export const checkAuth = (pathname: string) => {
+  const authInfo = getAuthInfo(pathname)
+  const userInfo = xxxx
+
+  if (authInfo.needLogin !== false && ...) {
+    router.navigate('/login')
+    return false
+  }
+  return true
+}
+```
