@@ -41,7 +41,7 @@
 |   | vue + mobile  | vue + desktop  | react + mobile  | react + desktop  |
 |:----------|:----------|:----------|:----------|:----------|
 | 框架    | vue3   | vue3    | react18    | react18    |
-| 状态管理库    | pinia    | pinia    | react-redux    | eact-redux    |
+| 状态管理库    | pinia    | pinia    | react-redux    | react-redux    |
 | 组件库    | vant    | elementPlus    | antd-mobile    | antd    |
 | css预编译    | Less    | Less    | Less    | Less    |
 | 构建工具    | webpack5    | webpack5    | webpack5    | webpack5    |

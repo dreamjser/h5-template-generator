@@ -21,7 +21,7 @@
     "alwaysStrict": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "jsx": "react",
+    "jsx": "react-jsx",
     // 生成导入命名空间
     "esModuleInterop": true,
     // 删除注释

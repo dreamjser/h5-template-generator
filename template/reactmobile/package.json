@@ -13,18 +13,26 @@
     "serve": "node ./json_server/server.js",
     "clean": "rm -rf dist",
     "prepare": "git init && chmod ug+x .husky/* && husky install",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "test": "jest --coverage"
   },
-  "author": "sunyg@belink.com",
+  "author": "dreamjser@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
+    "@commitlint/cli": "^17.8.1",
+    "@commitlint/config-conventional": "^17.8.1",
     "@dreamjser/h5-webpack-cli": "^1.0.34",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/jest": "^29.5.8",
     "husky": "^8.0.3",
-    "json-server": "^0.17.3",
-    "lint-staged": "^13.2.3",
-    "webpack-bundle-analyzer": "^4.9.0"
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "json-server": "^0.17.4",
+    "lint-staged": "^13.3.0",
+    "ts-jest": "^29.1.1",
+    "webpack-bundle-analyzer": "^4.9.1"
   },
   "dependencies": {
     "@dreamjser/h5-loading-toast": "^1.0.3",
