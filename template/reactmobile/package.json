@@ -4,8 +4,8 @@
   "description": "a template of react",
   "main": "index.js",
   "scripts": {
-    "dev:single": "npm run serve & cli-dev-s --framework=react",
-    "dev:multiple": "npm run serve & cli-dev-m --framework=react",
+    "dev:single": "cli-dev-s --framework=react",
+    "dev:multiple": "cli-dev-m --framework=react",
     "build:s-test": "npm run clean && cli-build-s --env=sit --framework=react all",
     "build:m-test": "npm run clean && cli-build-m --env=sit --framework=react all",
     "create": "cli-create --framework=react",
