@@ -23,17 +23,17 @@ module.exports = {
     App: 'readonly',
     GLOBAL_CONFIG: 'readonly',
   },
-
   plugins: [
     'react',
     '@typescript-eslint',
     'prettier',
   ],
-  "settings": {
+  settings: {
     "react": {
       "version": "detect"
     }
   },
+  ignorePatterns: ["**/__test__/*"],
   // add your custom rules here
   rules: {
     'no-console': 'off',
