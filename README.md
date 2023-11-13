@@ -52,6 +52,7 @@
 | 本地mock    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | 环境变量   | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | pre-commit校验    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
+| 单元测试(jest)    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 
 ## 模板
 
