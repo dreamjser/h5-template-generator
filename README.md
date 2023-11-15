@@ -19,15 +19,21 @@
 脚手架支持生成vue/react，pc端/移动端的项目
 
 ```
+  // 选择平台 mobile-移动端 destop-桌面(PC)端
   > generate-template h5-project
   ? please select a platform
   1) mobile
   2) desktop
   Answer: 1
-
+  // 选择框架
   ? please select a framework
   1) react
   2) vue
+  Answer: 1
+  // 是否使用e2e测试平台
+   ? do you need use e2e test platform(cypress)?
+  1) Y
+  2) N
   Answer: 1
 
   // 此时已生成项目h5-project
@@ -53,6 +59,7 @@
 | 环境变量   | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | pre-commit校验    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | 单元测试(jest)    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
+| 端到端测试(cypress)    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 
 ## 模板
 

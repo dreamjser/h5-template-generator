@@ -8,6 +8,7 @@ coverage/
 *.ntvs*
 *.njsproj
 *.sln
+*.gz
 
 yarn.lock
 package-lock.json
