@@ -5,8 +5,10 @@ import chalk from 'chalk'
 import path from 'path'
 import url from 'url'
 import fs from 'fs'
+import { createRequire } from 'module'
 import copyTemplateDir from 'copy-template-dir'
 
+const require = createRequire(import.meta.url)
 const argvs = process.argv
 
 // 选择平台
@@ -57,16 +59,13 @@ const updateE2EFile = async () => {
   const dir = argvs[argvs.length - 1]
   const packagePath = path.join(process.cwd(), `${dir}/package.json`)
 
-  const packageJSON = await import(packagePath, {
-    assert: { type: 'json' }
-  })
+  const packageJSON = require(packagePath)
 
-  const json = packageJSON['default']
-  json.scripts['cypress:open'] = "cypress open"
-  json.devDependencies['cypress'] = '^13.5.0'
+  packageJSON.scripts['cypress:open'] = "cypress open"
+  packageJSON.devDependencies['cypress'] = '^13.5.0'
 
   return new Promise((reslove) => {
-    fs.writeFile(packagePath, JSON.stringify(json, null, 2), 'utf8', reslove)
+    fs.writeFile(packagePath, JSON.stringify(packageJSON, null, 2), 'utf8', reslove)
   })
 
 }
