@@ -13,14 +13,19 @@
     "serve": "node ./json_server/server.js",
     "clean": "rm -rf dist",
     "prepare": "git init && chmod ug+x .husky/* && husky install",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "test": "cli-test --verbose",
+    "test:coverage": "cli-test --coverage"
   },
   "author": "dreamjser@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
-    "@dreamjser/h5-webpack-cli": "^1.0.34",
+    "@dreamjser/h5-webpack-cli": "^1.0.36",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/vue": "^8.0.0",
+    "@types/jest": "^29.5.8",
     "husky": "^8.0.3",
     "json-server": "^0.17.3",
     "lint-staged": "^13.2.3",

@@ -15,13 +15,13 @@
     "prepare": "git init && chmod ug+x .husky/* && husky install",
     "pre-commit": "lint-staged",
     "test": "cli-test --verbose",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "cli-test --coverage"
   },
   "author": "dreamjser@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@commitlint/config-conventional": "^17.8.1",
-    "@dreamjser/h5-webpack-cli": "^1.0.35",
+    "@dreamjser/h5-webpack-cli": "^1.0.36",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.0",
     "@types/jest": "^29.5.8",
