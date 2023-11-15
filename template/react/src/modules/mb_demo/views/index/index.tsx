@@ -21,6 +21,7 @@ const View = () => {
       App.interface.alert('提交成功')
     })
   }
+
   return (
     <div>
       <div>
@@ -28,7 +29,7 @@ const View = () => {
         <input
           onChange={(e: any) => {
             setName(e.target.value)
-          }}
+          } }
           placeholder="请输入用户名"
         />
       </div>
@@ -37,7 +38,7 @@ const View = () => {
         <input
           onChange={(e: any) => {
             setPassword(e.target.value)
-          }}
+          } }
           placeholder="请输入密码"
         />
       </div>
