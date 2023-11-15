@@ -21,6 +21,7 @@ module.exports = {
     'vue',
     'prettier'
   ],
+  ignorePatterns: ["**/__test__/*"],
   // add your custom rules here
   rules: {
     'no-console': 'off',
