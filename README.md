@@ -67,6 +67,6 @@
 
 react模板: [https://github.com/dreamjser/h5-react-template](https://github.com/dreamjser/h5-react-template)
 
-vue模板: [https://github.com/dreamjser/h5-react-template](https://github.com/dreamjser/h5-react-template)
+vue模板: [https://github.com/dreamjser/h5-vue-template](https://github.com/dreamjser/h5-vue-template)
 
 
