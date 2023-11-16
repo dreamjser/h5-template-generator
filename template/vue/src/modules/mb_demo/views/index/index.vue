@@ -43,7 +43,7 @@ const onSubmit = () => {
     url: '/login',
     method: 'GET',
   }).then(() => {
-    App.interface.toast('提交成功')
+    App.interface.alert('提交成功')
   })
 }
 </script>
