@@ -22,7 +22,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.6",
     "@commitlint/config-conventional": "^17.6.6",
-    "@dreamjser/h5-webpack-cli": "^1.0.36",
+    "@dreamjser/h5-webpack-cli": "^1.0.38",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/vue": "^8.0.0",
     "@types/jest": "^29.5.8",
