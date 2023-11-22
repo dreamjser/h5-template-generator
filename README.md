@@ -53,6 +53,7 @@
 | 构建工具    | webpack5    | webpack5    | webpack5    | webpack5    |
 | typeScript    | :white_check_mark:     | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | eslint    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
+| prettier    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | 单页面打包    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | 多页面打包    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:   | :white_check_mark:    |
 | 本地mock    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
