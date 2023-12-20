@@ -1,7 +1,7 @@
 def git_branch = '*/master'
-def git_url = 'https://github.com/dreamjser/h5-vue-template.git'
-def image_name = 'image_vue_app'
-def container_name = 'container_vue_app'
+def git_url = 'https://github.com/dreamjser/h5-react-template.git'
+def image_name = 'image_react_app'
+def container_name = 'container_react_app'
 
 node {
   stage('拉取代码') {
@@ -38,7 +38,7 @@ node {
     sh """
       echo 'imageId: ${imageId}'
       echo 'Tag: ${Tag}'
-      if [ "${imageId}" != "${Tag}" ]
+      if [ "${imageId}" != "${Tag}" ] && [ "${imageId}" ]
       then
         docker rmi ${image_name}:${imageId}
         echo '已删除镜像${image_name}:${imageId}'
