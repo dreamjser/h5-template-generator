@@ -33,6 +33,7 @@ module.exports = {
         semi: false,
       },
     ],
-    'vue/multi-word-component-names': 'off'
+    'vue/multi-word-component-names': 'off',
+    "@typescript-eslint/explicit-module-boundary-types": "off",
   }
 }
