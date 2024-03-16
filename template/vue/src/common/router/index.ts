@@ -7,19 +7,6 @@ export type RouterProps = {
   query?: object
 }
 
-function parseQueryString(data: any) {
-  const arr: any = []
-  if (!data) {
-    return ''
-  }
-
-  Object.keys(data).forEach((key: string) => {
-    arr.push(`${key}=${data[key]}`)
-  })
-
-  return '?' + arr.join('&')
-}
-
 export const push = (pathname: string, opts: RouterProps) => {
   // 权限校验
   if (!checkAuth(pathname)) {
