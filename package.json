@@ -1,6 +1,6 @@
 {
   "name": "@dreamjser/h5-template-generator",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "a html5 project template cli",
   "main": "index.js",
   "type": "module",
