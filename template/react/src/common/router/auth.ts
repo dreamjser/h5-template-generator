@@ -15,7 +15,7 @@ const getAuthInfo = (pathname: string) => {
 export const checkAuth = (pathname: string) => {
   const authInfo = getAuthInfo(pathname)
 
-  if (authInfo.needLogin !== false) {
+  if (authInfo && authInfo.needLogin !== false) {
     router.navigate('/login')
     return false
   }
