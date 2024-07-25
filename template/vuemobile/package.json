@@ -21,7 +21,7 @@
   "license": "ISC",
   "devDependencies": {
     "@commitlint/config-conventional": "^17.8.1",
-    "@dreamjser/h5-webpack-cli": "^1.0.38",
+    "@dreamjser/h5-webpack-cli": "^1.0.39",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/vue": "^8.0.0",
     "@types/jest": "^29.5.8",
