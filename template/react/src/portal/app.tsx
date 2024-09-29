@@ -16,5 +16,10 @@ export default function Home() {
     }
   }, [location])
 
-  return <Outlet />
+  return (
+    <div className="main-container">
+      <Outlet />
+      <div id="mico_view"></div>
+    </div>
+  )
 }

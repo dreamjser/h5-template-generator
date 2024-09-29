@@ -16,6 +16,7 @@
     "noEmitOnError": true,
     "noImplicitReturns": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "strict": true,
     // 加入严格模式
     "alwaysStrict": true,

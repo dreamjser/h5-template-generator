@@ -29,6 +29,15 @@ const frameworkQuestion = [{
   choices: ['react', 'vue'],
 }]
 
+// 选择是否创建微前端(主应用/微应用)
+const micoQuestion = [{
+  type: 'rawlist',
+  message: 'do you will create an mico app?',
+  name: 'value',
+  default: 'N',
+  choices: ['N', 'mainapp', 'micoapp'],
+}]
+
 // 是否使用e2e测试
 const e2etestQuestion = [{
   type: 'rawlist',
@@ -58,7 +67,6 @@ const renameFile = () => {
 const updateE2EFile = async () => {
   const dir = argvs[argvs.length - 1]
   const packagePath = path.join(process.cwd(), `${dir}/package.json`)
-
   const packageJSON = require(packagePath)
 
   packageJSON.scripts['cypress:open'] = "cypress open"
@@ -67,7 +75,18 @@ const updateE2EFile = async () => {
   return new Promise((reslove) => {
     fs.writeFile(packagePath, JSON.stringify(packageJSON, null, 2), 'utf8', reslove)
   })
+}
 
+const updateMicoFile = async (type) => {
+  const dir = argvs[argvs.length - 1]
+  const packagePath = path.join(process.cwd(), `${dir}/package.json`)
+  const packageJSON = require(packagePath)
+
+  packageJSON.devDependencies['qiankun'] = '^2.10.16'
+
+  return new Promise((reslove) => {
+    fs.writeFile(packagePath, JSON.stringify(packageJSON, null, 2), 'utf8', reslove)
+  })
 }
 
 const init = async () => {
@@ -83,16 +102,24 @@ const init = async () => {
   const e2etestDir = path.join(baseDir, '../template/e2etest')
   const platform = await inquirer.prompt(platformQuestion)
   const framework = await inquirer.prompt(frameworkQuestion)
+  const micoApp = await inquirer.prompt(micoQuestion)
   const e2etest = await inquirer.prompt(e2etestQuestion)
   const srcFrameworkDir = path.join(baseDir, `../template/${framework.value}`)
   const srcPlatformDir = path.join(baseDir, `../template/${platform.value}`)
   const srcFrameworkPlatformDir = path.join(baseDir, `../template/${framework.value}${platform.value}`)
+  const srcFrameworkMicoApp = path.join(baseDir, `../template/${framework.value}${micoApp.value}`)
 
   await copyFile(srcPublicDir, targetDir)
   await copyFile(srcFrameworkDir, targetDir)
   await copyFile(srcPlatformDir, targetDir)
   await copyFile(srcFrameworkPlatformDir, targetDir)
   await renameFile()
+
+  if(micoApp.value !== 'N') {
+    await copyFile(srcFrameworkMicoApp, targetDir)
+    await updateMicoFile(micoApp.value)
+  }
+
   if(e2etest.value === 'Y') {
     await copyFile(e2etestDir, targetDir)
     await updateE2EFile()
