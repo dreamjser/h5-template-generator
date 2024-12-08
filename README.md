@@ -30,8 +30,12 @@
   1) react
   2) vue
   Answer: 1
+  // 选择是否创建微前端(主应用/微应用)
+  ? do you will create an mico app?
+  1) N 2)mainApp 3)micoApp
+  Answer: 3
   // 是否使用e2e测试平台
-   ? do you need use e2e test platform(cypress)?
+  ? do you need use e2e test platform(cypress)?
   1) Y
   2) N
   Answer: 1
@@ -49,6 +53,7 @@
 | 框架    | vue3   | vue3    | react18    | react18    |
 | 状态管理库    | pinia    | pinia    | react-redux    | react-redux    |
 | 组件库    | vant    | elementPlus    | antd-mobile    | antd    |
+| 微前端    | qiankun    | qiankun    | qiankun    | qiankun    |
 | css预编译    | Less    | Less    | Less    | Less    |
 | 构建工具    | webpack5    | webpack5    | webpack5    | webpack5    |
 | typeScript    | :white_check_mark:     | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
