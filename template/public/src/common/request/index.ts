@@ -1,59 +1,56 @@
 import {
-  getGlobalAxios,
-  getAxios,
-  AllType,
-  OptionsGlobalType,
-} from '@dreamjser/request-axios'
+  HttpClient,
+  RequestConfig,
+  ResponseConfig,
+} from '@dreamjser/http-client'
 import { showLoading, hideLoading } from './loading'
 
-const globalOpts: OptionsGlobalType = {
-  timeout: 30000,
+interface CustomRequestConfig extends RequestConfig {
+  loading?: boolean
+  hasOwnError?: boolean
+}
+
+const client = new HttpClient({
   baseURL: GLOBAL_CONFIG.BASE_URL,
-}
-const axiosInstance = getGlobalAxios(globalOpts)
+  timeout: 5000,
+  withCredentials: true,
+})
 
-const requestHook = (config: AllType) => {
-  !config.slient && showLoading()
-}
-
-const responseHook = (reslove: any, reject: any, res: any) => {
-  const { config, data } = res
-  const { errorCode, errorMsg } = data
-
-  !config.slient && setTimeout(hideLoading, 100)
-
-  if (errorCode !== '0') {
-    if (config.publicError) {
-      App.interface.toast(errorMsg)
-    } else {
-      reject({
-        errorCode,
-        errorMsg,
-      })
+client.useRequestInterceptor({
+  onRequest: (config: CustomRequestConfig) => {
+    const conf = {
+      loading: true,
+      hasOwnError: false,
+      ...config,
     }
-    return
-  }
 
-  reslove(data.data)
+    if (conf.loading) {
+      showLoading()
+    }
+
+    return conf
+  },
+})
+
+client.useResponseInterceptor({
+  onResponse: (responseConfig: ResponseConfig) => {
+    const { config, response, resolve } = responseConfig
+    const { data } = (response as Record<string, any>).data || {}
+
+    if ((config as CustomRequestConfig).loading) {
+      setTimeout(hideLoading, 50)
+    }
+
+    resolve(data)
+    return data
+  },
+  onResponseError: (error: Error) => {
+    App.interface.toast('网络请求失败')
+    setTimeout(hideLoading, 50)
+    return error
+  },
+})
+
+export default (config: CustomRequestConfig) => {
+  return client.request(config)
 }
-
-const request = (opts: AllType) => {
-  opts.requestHook = requestHook
-  opts.responseHook = responseHook
-  return new Promise((reslove, reject) => {
-    getAxios(opts, axiosInstance)
-      .then(reslove)
-      .catch(({ config, error }: any) => {
-        !config.slient && setTimeout(hideLoading, 100)
-        if (config.publicError) {
-          App.interface.toast(error.message || '请求失败')
-        } else {
-          reject({
-            errorMsg: error.message,
-          })
-        }
-      })
-  })
-}
-
-export default request
