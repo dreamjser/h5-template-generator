@@ -1,4 +1,4 @@
-import {  AllType } from '@dreamjser/request-axios'
+import { CustomRequestConfig } from '@/common/request'
 import { AlertProps, ConfirmProps, ToastProps } from '@/common/app/interface'
 import {RouterProps} from '@/common/router'
 
@@ -19,7 +19,7 @@ interface RouterType {
 }
 
 type IApp = {
-  request: (opts: AllType) => Promise<void>
+  request: (opts: CustomRequestConfig) => Promise<void>
   interface: InterfaceType
   router: RouterType
   [propName: string]: any

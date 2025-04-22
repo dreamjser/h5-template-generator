@@ -5,7 +5,7 @@ import {
 } from '@dreamjser/http-client'
 import { showLoading, hideLoading } from './loading'
 
-interface CustomRequestConfig extends RequestConfig {
+export interface CustomRequestConfig extends RequestConfig {
   loading?: boolean
   hasOwnError?: boolean
 }
