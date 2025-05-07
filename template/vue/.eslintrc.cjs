@@ -5,11 +5,15 @@ module.exports = {
   env: {
     browser: true,
   },
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    extraFileExtensions: ['.vue'],
+  },
   extends: [
     'eslint:recommended',
     'plugin:prettier/recommended',
     'plugin:vue/recommended',
-    "@vue/typescript/recommended",
     'prettier',
   ],
   globals: {

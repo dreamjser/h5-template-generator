@@ -2,6 +2,7 @@
   "name": "h5-react-template",
   "version": "1.0.0",
   "description": "a template of react",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev:single": "cli-dev-s --framework=react",
@@ -10,7 +11,7 @@
     "build:m-test": "npm run clean && cli-build-m --env=sit --framework=react all",
     "create": "cli-create --framework=react",
     "report": "webpack-bundle-analyzer ./dist/stats.json",
-    "serve": "node ./json_server/server.js",
+    "serve": "node ./json_server/server.cjs",
     "clean": "rm -rf dist",
     "prepare": "git init && chmod ug+x .husky/* && husky install",
     "pre-commit": "lint-staged",

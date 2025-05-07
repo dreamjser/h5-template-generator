@@ -1,5 +1,4 @@
 import '@/common/styles/app.less'
-import 'vant/lib/index.css'
 import '@/common/app'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

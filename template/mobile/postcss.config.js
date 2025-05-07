@@ -1,13 +1,16 @@
-// https://github.com/michael-ciniawsky/postcss-load-config
+import path from 'path'
 
-module.exports = {
+export default {
   "plugins": {
     "postcss-import": {},
     "postcss-url": {},
     "autoprefixer": {},
-    "postcss-px-to-viewport": {
+    "@dreamjser/postcss-px-to-viewport": {
       unitToConvert: "px",
-      viewportWidth: 750,
+      viewportWidth: (file) => {
+        const designWidth = (file.includes(path.join('node_modules', 'vant')) || file.includes(path.join('node_modules', 'antd-mobile'))) ? 375 : 750;
+        return designWidth
+      },
       unitPrecision: 6,
       propList: ["*"],
       minPixelValue: 2,
