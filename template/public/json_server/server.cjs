@@ -1,23 +1,22 @@
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+// server.js
+const jsonServer = require('json-server')
+const path = require('path')
+const server = jsonServer.create('./')
+const router = jsonServer.router(path.join(__dirname, 'db.json'))
+const middlewares = jsonServer.defaults()
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-export default {
-  // 别名
-  alias: {
-    '@': resolve(__dirname, 'src'),
-    '@tmp': resolve(__dirname, '.tmp'),
-  },
-  devPort: '3002',
-  containerId: 'main_app',
-  modulePrefix: 'mb_',
-  outputPath: 'dist',
-  proxyTable: {
-    '/api': {
-      target: 'http://localhost:4002',
-      changeOrigin: true
-    }
-  },
+server.use(middlewares)
+server.use('/api', router)
+router.render = (req, res) => {
+  setTimeout(() => {
+    res.jsonp({
+      errorCode: '0',
+      errorMsg: 'success',
+      data: res.locals.data
+    })
+  }, 400)
 }
+
+server.listen(4002, () => {
+  console.log('JSON Server is running')
+})

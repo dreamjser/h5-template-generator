@@ -16,7 +16,7 @@ vm.use(pinia)
 vm.use(router)
 
 function render() {
-  vm.mount('#main_app')
+  vm.mount('#app')
 }
 
 if(!isQiankun) {

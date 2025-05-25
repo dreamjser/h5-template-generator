@@ -9,7 +9,7 @@ import '@/common/app'
 import './mainApp'
 import { isQiankun } from './micoApp'
 
-const root = createRoot(document.getElementById('main_app') as HTMLElement)
+const root = createRoot(document.getElementById('app') as HTMLElement)
 
 function render() {
   root.render(

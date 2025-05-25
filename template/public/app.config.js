@@ -9,6 +9,7 @@ module.exports = {
   devPort: '3003',
   outputPath: 'dist',
   modulePrefix: 'mb_',
+  containerId: 'app',
   proxyTable: {
     '/api': {
       target: 'http://localhost:4002',
