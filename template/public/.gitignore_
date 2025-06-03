@@ -17,3 +17,4 @@ package-lock.json
 .tmp
 pnpm-lock.yaml
 .eslintcache
+/common/router/index.ts
