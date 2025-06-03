@@ -1,10 +1,12 @@
-import { CustomRequestConfig } from '@/common/request'
+import { HttpClientConfig } from '@dreamjser/http-client'
 import { AlertProps, ConfirmProps, ToastProps } from '@/common/app/interface'
 import {RouterProps} from '@/common/router'
 
 type GLOBAL_CONFIG = {
   BASE_URL: string
   NODE_ENV: string
+  PAGE_TYPE: string
+  PLATFORM: string
 }
 
 interface InterfaceType {
@@ -19,7 +21,7 @@ interface RouterType {
 }
 
 type IApp = {
-  request: (opts: CustomRequestConfig) => Promise<void>
+  request: (opts: HttpClientConfig) => Promise<void>
   interface: InterfaceType
   router: RouterType
   [propName: string]: any
