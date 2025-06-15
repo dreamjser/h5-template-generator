@@ -30,7 +30,7 @@
   1) react
   2) vue
   Answer: 1
-    // 选择构建工具
+  // 选择构建工具
   ? please select a build tool
   1) vite
   2) webpack
