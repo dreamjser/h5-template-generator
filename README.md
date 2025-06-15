@@ -30,6 +30,11 @@
   1) react
   2) vue
   Answer: 1
+    // 选择构建工具
+  ? please select a build tool
+  1) vite
+  2) webpack
+  Answer: 1
   // 选择是否创建微前端(主应用/微应用)
   ? do you will create an mico app?
   1) N 2)mainApp 3)micoApp
@@ -55,7 +60,7 @@
 | 组件库    | vant    | elementPlus    | antd-mobile    | antd    |
 | 微前端    | qiankun    | qiankun    | qiankun    | qiankun    |
 | css预编译    | Less    | Less    | Less    | Less    |
-| 构建工具    | webpack5    | webpack5    | webpack5    | webpack5    |
+| 构建工具    | webpack/vite    | webpack/vite   | webpack/vite    | webpack/vite    |
 | typeScript    | :white_check_mark:     | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | eslint    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |
 | prettier    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    | :white_check_mark:    |

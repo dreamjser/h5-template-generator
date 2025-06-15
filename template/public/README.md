@@ -127,30 +127,25 @@ npm run build:m-test
 
 ## 5.接口请求
 
-
 ```
 // App为全局变量
 App.request(opts).then((r) => {
   ...
 })
 ```
-
-opts参数可以设置axios的配置，配置同axios，同时新增了自定义配置如下
+opts配置如下
 
 ```
 {
-  // 是否显示loading，默认true
-  slient?:
-  // 是否上传文件，默认false，为true则默认使用FormData数据
-  isUpload?: boolean
-  // 传参数据，不区分method
-  data?: object
-  // 是否显示公共错误提示，默认true，为false可以在调用时捕获异常做处理
-  publicError?: boolean
-  // 请求发起前hook
-  requestHook?: (opts: AllType) => any
-  // 请求返回数据hook
-  responseHook?: (reslove: any, reject: any, data: any) => void
+  url: string;
+  method?: HttpMethod;
+  headers?: Record<string, string>;
+  data?: any;
+  timeout?: number;
+  withCredentials?: boolean;
+  responseType?: XMLHttpRequestResponseType;
+  onUploadProgress?: (progress: number) => void;
+  onDownloadProgress?: (progress: number) => void;
 }
 
 ```
