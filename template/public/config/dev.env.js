@@ -1,4 +1,4 @@
-import config from '../app.config'
+import config from '../app.config.js'
 
 export default {
   NODE_ENV: '"development"',

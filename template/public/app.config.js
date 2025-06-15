@@ -1,15 +1,19 @@
-const path = require('path')
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
   // 别名
   alias: {
-    '@': path.resolve(__dirname, 'src'),
-    '@tmp': path.resolve(__dirname, '.tmp'),
+    '@': resolve(__dirname, 'src'),
+    '@tmp': resolve(__dirname, '.tmp'),
   },
-  devPort: '3003',
-  outputPath: 'dist',
-  modulePrefix: 'mb_',
+  devPort: '3002',
   containerId: 'app',
+  modulePrefix: 'mb_',
+  outputPath: 'dist',
   proxyTable: {
     '/api': {
       target: 'http://localhost:4002',

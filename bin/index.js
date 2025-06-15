@@ -29,6 +29,15 @@ const frameworkQuestion = [{
   choices: ['react', 'vue'],
 }]
 
+// 选择构建工具
+const buildToolQuestion = [{
+  type: 'rawlist',
+  message: 'please select a build tool',
+  name: 'value',
+  default: 'vite',
+  choices: ['vite', 'webpack'],
+}]
+
 // 选择是否创建微前端(主应用/微应用)
 const micoQuestion = [{
   type: 'rawlist',
@@ -82,12 +91,39 @@ const updateMicoFile = async (type) => {
   const packagePath = path.join(process.cwd(), `${dir}/package.json`)
   const packageJSON = require(packagePath)
 
-  packageJSON.devDependencies['qiankun'] = '^2.10.16'
+  packageJSON.dependencies['qiankun'] = '^2.10.16'
 
   return new Promise((reslove) => {
     fs.writeFile(packagePath, JSON.stringify(packageJSON, null, 2), 'utf8', reslove)
   })
 }
+
+const updateViteReactFile = async () => {
+  const dir = argvs[argvs.length - 1]
+  const indexHtmlPath = path.join(process.cwd(), `${dir}/index.html`)
+  let indexHtmlData = fs.readFileSync(indexHtmlPath, 'utf8')
+  indexHtmlData = indexHtmlData.replace('index.ts', 'index.tsx')
+  return new Promise((reslove) => {
+    fs.writeFile(indexHtmlPath, indexHtmlData, 'utf8', reslove)
+  })
+}
+
+const updateToolPackage = async (tool) => {
+  const dir = argvs[argvs.length - 1]
+  const packagePath = path.join(process.cwd(), `${dir}/package.json`)
+  let packageJSON = require(packagePath)
+
+  if(tool === 'vite') {
+    packageJSON.devDependencies['@dreamjser/h5-vite-cli'] = '^1.0.2'
+  } else{
+    packageJSON.devDependencies['@dreamjser/h5-webpack-cli'] = '^1.0.49'
+  }
+
+  return new Promise((reslove) => {
+    fs.writeFile(packagePath, JSON.stringify(packageJSON, null, 2), 'utf8', reslove)
+  })
+}
+
 
 const init = async () => {
   if(argvs.length < 3) {
@@ -102,10 +138,12 @@ const init = async () => {
   const e2etestDir = path.join(baseDir, '../template/e2etest')
   const platform = await inquirer.prompt(platformQuestion)
   const framework = await inquirer.prompt(frameworkQuestion)
+  const buildTool = await inquirer.prompt(buildToolQuestion)
   const micoApp = await inquirer.prompt(micoQuestion)
   const e2etest = await inquirer.prompt(e2etestQuestion)
   const srcFrameworkDir = path.join(baseDir, `../template/${framework.value}`)
   const srcPlatformDir = path.join(baseDir, `../template/${platform.value}`)
+  const srcBuildToolDir = path.join(baseDir, `../template/${buildTool.value}`)
   const srcFrameworkPlatformDir = path.join(baseDir, `../template/${framework.value}${platform.value}`)
   const srcFrameworkMicoApp = path.join(baseDir, `../template/${framework.value}${micoApp.value}`)
 
@@ -113,7 +151,14 @@ const init = async () => {
   await copyFile(srcFrameworkDir, targetDir)
   await copyFile(srcPlatformDir, targetDir)
   await copyFile(srcFrameworkPlatformDir, targetDir)
+  await copyFile(srcBuildToolDir, targetDir)
   await renameFile()
+
+  await updateToolPackage(buildTool.value)
+  if(buildTool.value === 'vite' && framework.value === 'react') {
+    await updateViteReactFile()
+  }
+
 
   if(micoApp.value !== 'N') {
     await copyFile(srcFrameworkMicoApp, targetDir)
